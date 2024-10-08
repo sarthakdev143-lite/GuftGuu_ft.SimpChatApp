@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import SockJS from "sockjs-client";
 import { Stomp } from "@stomp/stompjs";
+import BASE_URL from "@/Helper";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
@@ -18,7 +19,7 @@ const Chat = () => {
     if (stompClientRef.current) return;
 
     console.log("Setting up WebSocket connection...");
-    const socket = new SockJS("http://localhost:8080/chat");
+    const socket = new SockJS(BASE_URL);
     const client = Stomp.over(socket);
 
     client.connect({}, () => {
