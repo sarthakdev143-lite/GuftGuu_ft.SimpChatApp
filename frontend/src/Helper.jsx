@@ -1,5 +1,4 @@
-// For Running Locally.
-// export default BASE_URL = "http://localhost:8080/chat";
+// This will use the `NEXT_PUBLIC_BASE_URL` environment variable or default to localhost if not set
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8080/chat";
 
-// For Production.
-export default BASE_URL = "https://guftguu.onrender.com";
+export default BASE_URL;
