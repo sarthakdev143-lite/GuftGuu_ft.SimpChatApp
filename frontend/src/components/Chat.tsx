@@ -165,7 +165,7 @@ const Chat = () => {
             <div
               className={`max-w-[70%] rounded-lg p-3 ${msg.sender === username
                 ? "bg-blue-500 text-white"
-                : isDarkMode ? 'bg-[#374151]' : 'bg-red-400 dark:bg-gray-300'
+                : isDarkMode ? 'bg-[#374151]' : 'bg-gray-300'
                 }`}
             >
               <p className="font-semibold">{msg.sender}</p>
