@@ -14,6 +14,7 @@ const Chat = () => {
   const messagesEndRef = useRef(null);
   const [isSending, setIsSending] = useState(false);
   const stompClientRef = useRef(null);
+  const [isConnected, setIsConnected] = useState(false);
 
   const setupWebSocket = useCallback(() => {
     if (stompClientRef.current) return;
@@ -24,6 +25,7 @@ const Chat = () => {
 
     client.connect({}, () => {
       console.log("Connected to WebSocket");
+      setIsConnected(true);
       client.subscribe("/topic/messages", (message) => {
         console.log("Received message from server:", message.body);
         if (message.body) {
@@ -43,6 +45,7 @@ const Chat = () => {
         console.log("Disconnecting from WebSocket...");
         stompClientRef.current.disconnect(() => {
           console.log("Disconnected from WebSocket");
+          setIsConnected(false);
         });
       }
     };
@@ -125,6 +128,17 @@ const Chat = () => {
     );
   }
 
+  if (!isConnected) {
+    return (
+      <div className={`fixed inset-0 flex justify-center items-center ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-200 text-gray-800"}`}>
+        <div className="flex text-center gap-4 items-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+          <span className="text-lg font-semibold">Connecting to chat...</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className={`w-full max-w-2xl h-[600px] flex flex-col ${isDarkMode
@@ -151,7 +165,7 @@ const Chat = () => {
             <div
               className={`max-w-[70%] rounded-lg p-3 ${msg.sender === username
                 ? "bg-blue-500 text-white"
-                : "bg-red-400 dark:bg-gray-300"
+                : isDarkMode ? 'bg-[#374151]' : 'bg-red-400 dark:bg-gray-300'
                 }`}
             >
               <p className="font-semibold">{msg.sender}</p>
