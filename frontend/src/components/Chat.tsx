@@ -115,7 +115,7 @@ const Chat = () => {
             placeholder="Enter your name"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-2 mb-4 rounded outline-none border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700"
+            className="w-full p-2 mb-4 rounded outline-none border border-gray-600 bg-gray-700"
           />
           <button
             type="submit"
