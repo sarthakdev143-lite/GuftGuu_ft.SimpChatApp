@@ -3,9 +3,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import SockJS from "sockjs-client";
 import { Stomp } from "@stomp/stompjs";
-import BASE_URL from "@/Helper";
+import BASE_URL from "../../Helper";
 
-const Chat = () => {
+const WorldChat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [username, setUsername] = useState("");
@@ -102,14 +102,14 @@ const Chat = () => {
     return (
       <div
         className={`fixed inset-0 bg-opacity-50 ${isDarkMode ? "bg-gray-900" : "bg-gray-200"
-          } flex items-center justify-center`}
+          } flex items-center justify-center -mt-[10%]`}
       >
         <form
           onSubmit={handleSetUsername}
           className={`${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
             } p-8 rounded-lg shadow-lg`}
         >
-          <h2 className="text-2xl font-bold mb-4">Welcome to the Chat</h2>
+          <h2 className="text-2xl font-bold mb-4">Welcome to World Chat.</h2>
           <input
             type="text"
             placeholder="Enter your name"
@@ -198,4 +198,4 @@ const Chat = () => {
   );
 };
 
-export default Chat;
+export default WorldChat;

@@ -19,6 +19,8 @@
     "stompjs": "^2.3.3"
   },
   "devDependencies": {
+    "@types/node": "22.7.5",
+    "@types/react": "18.3.11",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "postcss": "^8",
