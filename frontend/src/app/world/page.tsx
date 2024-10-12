@@ -141,7 +141,7 @@ const WorldChat = () => {
 
   return (
     <div
-      className={`w-full max-w-2xl h-[600px] flex flex-col ${isDarkMode
+      className={`w-full max-w-2xl h-[600px] flex flex-col m-auto ${isDarkMode
         ? "dark bg-gray-800 text-white"
         : "bg-[#eee] text-gray-800"
         } shadow-lg rounded-lg overflow-hidden`}

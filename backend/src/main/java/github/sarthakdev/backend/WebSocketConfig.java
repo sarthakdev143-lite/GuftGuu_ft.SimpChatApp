@@ -20,6 +20,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // Register a WebSocket endpoint at "/chat" and allow cross-origin access
-        registry.addEndpoint("/chat").setAllowedOriginPatterns("https://guftguu.vercel.app/").withSockJS();
+        registry.addEndpoint("/chat").setAllowedOriginPatterns("https://guftguu.vercel.app/", "http://localhost:3000/")
+                .withSockJS();
     }
 }
